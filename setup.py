@@ -51,8 +51,10 @@ setup(
     cmake_args=[
         '-DCMAKE_INSTALL_LIBDIR=mitsuba',
         '-DCMAKE_INSTALL_BINDIR=mitsuba',
+        '-DCMAKE_BUILD_TYPE=Release',
         '-DCMAKE_INSTALL_INCLUDEDIR=mitsuba/include',
         '-DCMAKE_INSTALL_DATAROOTDIR=mitsuba/data',
+        '-DMI_DEFAULT_VARIANTS=scalar_rgb;cuda_ad_rgb',
         f'-DCMAKE_TOOLCHAIN_FILE={mi_cmake_toolchain_file}',
         f'-DMI_DRJIT_CMAKE_DIR:STRING={mi_drjit_cmake_dir}',
         f'-DMI_SRGB_COEFF_FILE:STRING={mi_srgb_coeff_file}',

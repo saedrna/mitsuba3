@@ -19,6 +19,7 @@ __pycache__
 
 # Default build directory
 /build*
+_skbuild/*
 
 # Auto-generated documentation files
 /docs/generated/plugins_*.rst
@@ -28,3 +29,5 @@ __pycache__
 /docs/src/quickstart
 /docs/src/generated
 /docs/resources
+
+mitsuba.egg-info/
