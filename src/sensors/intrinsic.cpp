@@ -130,7 +130,6 @@ public:
     }
 
     void update_camera_transforms() {
-
         Vector2f size = Vector2f(m_film->size());
         Float aspect  = size.x() / size.y();
         Float n       = m_near_clip;
@@ -151,15 +150,15 @@ public:
          * These do the following (in reverse order):
          *
          * 1. Create transform from camera space to [-1,1]x[-1,1]x[0,1] clip
-         *    coordinates (not taking account of the aspect ratio yet)
+         *    coordinates (already consider aspect ratio)
          *
          * 2+3. Translate and scale to shift the clip coordinates into the
-         *    range from zero to one, and take the aspect ratio into account.
+         *    range from zero to one.
          *
          */
         m_camera_to_sample =
-            Transform4f::scale(Vector3f(-0.5f, -0.5f * aspect, 1.f)) *
-            Transform4f::translate(Vector3f(-1.f, -1.f / aspect, 0.f)) *
+            Transform4f::scale(Vector3f(-0.5f, -0.5f, 1.f)) *
+            Transform4f::translate(Vector3f(-1.f, -1.f , 0.f)) *
             Transform4f(trafo);
 
         m_sample_to_camera = m_camera_to_sample.inverse();
